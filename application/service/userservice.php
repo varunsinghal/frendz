@@ -1,8 +1,15 @@
 <?php 
 
 require APP . 'core/service.php';
+require APP . 'model/usermodel.php';
 
 class UserService extends Service{
+
+
+	function __construct() {
+        parent::__construct();
+        $this->userModel = new UserModel($this->db);
+    }
 
 
 	public function authenticate($strUsername, $strPassword){
@@ -10,7 +17,7 @@ class UserService extends Service{
 			return null;
 		}
 		else{
-			$user_detail = $this->model->authenticate($strUsername, $strPassword);
+			$user_detail = $this->userModel->authenticate($strUsername, $strPassword);
 			if($user_detail->user_id == null){
 				return null;
 			}
@@ -21,11 +28,11 @@ class UserService extends Service{
 	}
 
 	public function register($strFirstName, $strLastName, $strEmail, $strPassword){
-		if($this->model->findByEmail($strEmail)){
+		if($this->userModel->findByEmail($strEmail)){
 			return array("status_flag" => -1, "message" => "Email already exists.");
 		}
 		else{
-			$this->model->insertUser($strFirstName, $strLastName, $strEmail, $strPassword);
+			$this->userModel->insertUser($strFirstName, $strLastName, $strEmail, $strPassword);
 			return array("status_flag" => 1, "message" => "Successfully registered.");
 		}
 	}
