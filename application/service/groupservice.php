@@ -2,12 +2,16 @@
 
 require APP . 'core/service.php';
 require APP . 'model/groupmodel.php';
+require APP . 'model/postmodel.php';
+require APP . 'model/commentmodel.php';
 
 class GroupService extends Service{
 
 	function __construct() {
         parent::__construct();
         $this->groupModel = new GroupModel($this->db);
+        $this->postModel = new PostModel($this->db);
+        $this->commentModel = new CommentModel($this->db);
     }
 
 	public function findGroupByMemberId($intUserId){
@@ -27,8 +31,19 @@ class GroupService extends Service{
 		}
 	}
 
-	public function findGroupById($intGroupId){
-		$this->groupModel->findGroupById($intGroupId);
+	public function validateAccess($user_id, $group_id){
+		if($result = $this->groupModel->accessByUserId($user_id, $group_id)){
+			return TRUE;
+		}
+		else{
+			return FALSE;
+		}
+	}
+
+	public function fetchByGroupId($int_group_id){
+		$this->groupModel->findGroupDetail($int_group_id);
+		$this->postModel->findAllPostByGroupId($int_group_id);
+		$this->commentModel->findAllCommentByGroupId($int_group_id);
 	}
 
 }

@@ -40,12 +40,17 @@ class Group extends Controller {
 
     public function id($group_id){
 
-        //if($this->groupService->validateAccess($_SESSION['user_id'], $this->protect($group_id))){
-            $posts = $this->groupService->findGroupById($group_id);
-        //}
-        //else{
-        //    header('location:' . URL . 'group/');
-        //}
-
+        if($this->groupService->validateAccess($_SESSION['user_id'], $this->protect($group_id))){
+            $posts = $this->groupService->fetchByGroupId($group_id);
+        }
+        else{
+           header('location:' . URL . 'group/');
+        }
+        // load views
+        require APP . 'view/_templates/header.php';
+        require APP . 'view/group/id.php';
+        require APP . 'view/_templates/footer.php';
     }
+
+    
 }

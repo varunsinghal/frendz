@@ -1,8 +1,16 @@
 <?php
 
-require APP . 'core/model.php';
 
-class UserModel extends Model {
+class UserModel{
+
+    function __construct($db)
+    {
+        try {
+            $this->db = $db;
+        } catch (PDOException $e) {
+            exit('Database connection could not be established.');
+        }
+    }
 	
 	public function authenticate($email, $password){
         $sql = "SELECT user_id, user_first_name from user where user_email=:email and user_password=:password";

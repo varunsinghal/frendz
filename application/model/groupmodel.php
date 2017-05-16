@@ -1,11 +1,19 @@
 <?php 
 
-require APP . 'core/model.php';
 
-class GroupModel extends Model{
+class GroupModel{
+
+    function __construct($db)
+    {
+        try {
+            $this->db = $db;
+        } catch (PDOException $e) {
+            exit('Database connection could not be established.');
+        }
+    }
 	
 	 public function findGroupByMemberId($user_id){
-        $sql = "SELECT gd.group_id, gd.group_name, gd.group_description from group_detail AS gd inner join group_member where user_id=:user_id";
+        $sql = "SELECT gd.group_id, gd.group_name, gd.group_description from group_detail AS gd left join group_member AS gm on gd.group_id = gm.group_id where user_id=:user_id";
         $query = $this->db->prepare($sql);
         $parameters = array(':user_id' => $user_id);
         $query->execute($parameters);
@@ -16,6 +24,14 @@ class GroupModel extends Model{
         $sql = "SELECT group_name, count(group_id) AS count_groups from group_detail where group_name=:group_name group by group_name";
         $query = $this->db->prepare($sql);
         $parameters = array(':group_name' => $group_name);
+        $query->execute($parameters);
+        return $query->fetch();
+    }
+
+    public function accessByUserId($user_id, $group_id){
+        $sql = "SELECT count(group_id) from group_member where user_id=:user_id and group_id=:group_id";
+        $query = $this->db->prepare($sql);
+        $parameters = array(':user_id' => $user_id, ':group_id' => $group_id);
         $query->execute($parameters);
         return $query->fetch();
     }
@@ -33,12 +49,13 @@ class GroupModel extends Model{
         $query->execute($parameters);
     }
 
-    public function findgroupById($group_id){
+    public function findGroupDetail($group_id){
         $sql = "SELECT * FROM group_detail WHERE group_id=:group_id";
         $query = $this->db->prepare($sql);
         $parameters = array(':group_id' => $group_id);
         $query->execute($parameters);
-        return $query->fetchObject();
+        return $query->fetch();
     }
+
 
 }
