@@ -41,9 +41,12 @@ class GroupService extends Service{
 	}
 
 	public function fetchByGroupId($int_group_id){
+		//build logic to return a single object
 		$this->groupModel->findGroupDetail($int_group_id);
 		$this->postModel->findAllPostByGroupId($int_group_id);
 		$this->commentModel->findAllCommentByGroupId($int_group_id);
 	}
+
+
 
 }

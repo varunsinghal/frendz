@@ -52,5 +52,17 @@ class Group extends Controller {
         require APP . 'view/_templates/footer.php';
     }
 
-    
+    /* AJAX-ACTION */
+
+    public function addPost(){
+
+    }
+
+    public function addComment(){
+
+    }
+
+    public function addUser(){
+
+    }
 }

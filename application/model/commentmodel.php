@@ -13,7 +13,7 @@ class CommentModel{
     }
 
 	public function findAllCommentByGroupId($group_id){
-		$sql = "select post_id, post_title, user_id from post_detail where group_id=:group_id";
+		$sql = "SELECT comment_id, comment_title, cd.post_id, cd.user_id FROM comment_detail AS cd inner join post_detail AS pd on cd.post_id = pd.post_id where pd.group_id=:group_id";
 		$query = $this->db->prepare($sql);
         $parameters = array(':group_id' => $group_id);
         $query->execute($parameters);

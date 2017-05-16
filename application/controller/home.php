@@ -14,7 +14,7 @@ class Home extends Controller
     function __construct() {
         parent::__construct();
         if(!isset($_SESSION['user_id'])){
-            header('location:' . URL . 'user/login');
+            header('location:' . URL . 'site/');
         }
     }
     /**
@@ -23,6 +23,15 @@ class Home extends Controller
      */
     public function index()
     {
+        //user dp only view
+
+        //generate summary
+        //no. of friends
+        //groups created
+        //groups joined
+        //posts created
+        //comments done
+
         // load views
         require APP . 'view/_templates/header.php';
         require APP . 'view/home/index.php';
