@@ -17,7 +17,7 @@
 
     <!-- navigation -->
     <div class="navigation">
-        {if $smarty.session.user_id}
+        {if $smarty.session.user_id|default:FALSE}
         <a href="{URL}">home</a>
         <a href="{URL}group">My Groups</a>
         <a href="{URL}connection">My Connections</a>
