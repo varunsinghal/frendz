@@ -1,6 +1,7 @@
 <?php
 
 require APP . 'service/messageservice.php';
+require APP . 'service/userservice.php';
 
 class Message extends Controller {
 
@@ -10,6 +11,7 @@ class Message extends Controller {
             header('location:' . URL . 'user/login');
         }
         $this->messageService = new MessageService($this->db);
+        $this->userService = new UserService($this->db);
         $this->smarty->assign('module_name', 'messages');
         
     }
@@ -21,12 +23,26 @@ class Message extends Controller {
     }
 
     public function create(){
-        //create a new thread
+        if(isset($_POST['send_message'])){
+            $this->messageService->addMessage($_SESSION['user_id'], $_POST['to_user_id'], $_POST['message_content']);
+            header('location:' . URL . 'message/id/' . $_POST['to_user_id']);
 
+        }
+        $this->smarty->assign('available_users', $this->userService->availableUsers($_SESSION['user_id']));
+        $this->smarty->display('message/create.tpl');
     }
 
-    public function id(){
-        //fetch specific thread - to a person
+    public function id($other_user_id=null){
+        if($other_user_id){
+            $threads = $this->messageService->fetchConversation($_SESSION['user_id'], $other_user_id);
+            $this->smarty->assign('threads', $threads);
+            $this->smarty->display('message/id.tpl');
+        }
+        else{
+            header('location:' . URL . 'message');
+        }
+
+        
 
     }
 

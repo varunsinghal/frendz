@@ -11,4 +11,12 @@ class MessageService{
     public function fetchActiveThreads($user_id){
     	return $this->messageModel->fetchMessageThreadsFor($user_id);
     }
+
+    public function addMessage($from, $to, $message){
+    	$this->messageModel->addMessage($from, $to, $message, time());
+    }
+
+    public function fetchConversation($from, $to){
+    	return $this->messageModel->fetchConversation($from, $to);
+    }
 }

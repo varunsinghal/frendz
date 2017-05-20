@@ -3,11 +3,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
     <title>{block name=title}Home{/block} | Frendz</title>
-    <link href="{URL}css/style.css" rel="stylesheet">
-    <link href="{URL}css/font-awesome.min.css" rel="stylesheet">
     <meta name="description" content="">
     <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
 
+  
+    <link href="{URL}css/font-awesome.min.css" rel="stylesheet">
+    <link href="{URL}css/jquery-ui.min.css" rel="stylesheet">
+    <link href="{URL}css/style.css" rel="stylesheet">
+    
+    <script src="{URL}js/jquery.js"></script>
+    <script src="{URL}js/jquery-ui.min.js"></script>
     {block name=head}{/block}
 
 </head>
@@ -52,7 +57,7 @@
     </div>
 
 </body>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
 
 <!-- define the project's URL (to make AJAX calls possible, even when using this in sub-folders etc) -->
 <script>

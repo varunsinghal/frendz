@@ -32,5 +32,15 @@ class UserService{
 			return array("status_flag" => 1, "message" => "Successfully registered.");
 		}
 	}
+
+	public function availableUsers($user_id){
+		$result = '[';
+		foreach ($this->userModel->findAllUsers($user_id) as $user) {
+			$result .= '{ label : "' . $user->user_first_name . ' ' . $user->user_last_name . '",';
+			$result .= 'value : "' . $user->user_id . '" }, ';
+		}
+		$result  .= ']';
+		return $result;
+	}
 	
 }

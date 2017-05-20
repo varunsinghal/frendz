@@ -8,6 +8,11 @@ body
     color: #52543D;
 }
 
+table{
+    font-size:100%;
+    color: #52543D;
+}
+
 a:active, a:visited, a:link
 {
     color: #000;

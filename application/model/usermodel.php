@@ -34,4 +34,12 @@ class UserModel{
         $parameters = array(':first_name' => $first_name, ':last_name' => $last_name, ':email' => $email, ':password' => $password);
         $query->execute($parameters);
     }
+
+    public function findAllUsers($user_id){
+        $sql = "SELECT user_id, user_first_name, user_last_name from user where user_id <> :user_id";
+        $query = $this->db->prepare($sql);
+        $parameters = array(':user_id' => $user_id);
+        $query->execute($parameters);
+        return $query->fetchAll();
+    }
 }
