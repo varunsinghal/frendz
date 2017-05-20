@@ -1,14 +1,12 @@
 <?php 
 
-require APP . 'core/service.php';
 require APP . 'model/usermodel.php';
 
-class UserService extends Service{
+class UserService{
 
 
-	function __construct() {
-		parent::__construct();
-		$this->userModel = new UserModel($this->db);
+	function __construct($db) {
+		$this->userModel = new UserModel($db);
 	}
 
 

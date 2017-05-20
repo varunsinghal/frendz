@@ -9,7 +9,7 @@ class User extends Controller {
 	function __construct() {
 
 		parent::__construct();
-		$this->userService = new UserService();
+		$this->userService = new UserService($this->db);
 		if(isset($_SESSION['user_id'])){
 			header('location:' . URL . 'home/');
 		}

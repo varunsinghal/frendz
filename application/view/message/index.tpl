@@ -2,5 +2,5 @@
 
 {block name=title}Message{/block}
 {block name=body}
-i
+
 {/block}

@@ -1,5 +1,6 @@
 <?php
 
+//require APP . 'service/messageservice.php';
 
 class Message extends Controller {
 

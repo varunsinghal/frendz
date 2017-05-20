@@ -1,17 +1,15 @@
 <?php 
 
-require APP . 'core/service.php';
 require APP . 'model/groupmodel.php';
 require APP . 'model/postmodel.php';
 require APP . 'model/commentmodel.php';
 
-class GroupService extends Service{
+class GroupService{
 
-	function __construct() {
-        parent::__construct();
-        $this->groupModel = new GroupModel($this->db);
-        $this->postModel = new PostModel($this->db);
-        $this->commentModel = new CommentModel($this->db);
+	function __construct($db) {
+        $this->groupModel = new GroupModel($db);
+        $this->postModel = new PostModel($db);
+        $this->commentModel = new CommentModel($db);
     }
 
 	public function findGroupByMemberId($intUserId){

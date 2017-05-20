@@ -8,7 +8,7 @@ class Group extends Controller {
 
 	function __construct() {
         parent::__construct();
-        $this->groupService = new GroupService();
+        $this->groupService = new GroupService($this->db);
 
         if(!isset($_SESSION['user_id'])){
             header('location:' . URL . 'user/login');
