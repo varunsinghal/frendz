@@ -16,9 +16,7 @@ class Message extends Controller {
     	//fetch all active threads 
 
     	// load views
-		require APP . 'view/_templates/header.php';
-		require APP . 'view/message/index.php';
-		require APP . 'view/_templates/footer.php';
+		$this->smarty->display('message/index.tpl');
     }
 
     public function create(){

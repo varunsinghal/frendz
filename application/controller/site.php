@@ -12,16 +12,12 @@ class Site extends Controller {
 
     	
     	// load views
-		require APP . 'view/_templates/header.php';
-		require APP . 'view/site/index.php';
-		require APP . 'view/_templates/footer.php';
-    }
+      $this->smarty->display('site/index.tpl');
+  }
 
-    public function about() {
+  public function about() {
 
         // load views
-        require APP . 'view/_templates/header.php';
-        require APP . 'view/site/about.php';
-        require APP . 'view/_templates/footer.php';
-    }
-    }
+     $this->smarty->display('problem/about.tpl');
+ }
+}

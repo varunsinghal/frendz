@@ -1,14 +1,22 @@
 <?php
 
+require APP . 'smarty/libs/Smarty.class.php';
+
 class Controller
 {
-    /**
-     * Whenever controller is created, open a database connection too and load "the model".
-     */
+
+    public $smarty = null;
 
     function __construct()
     {
         session_start();
+        $this->smarty = new Smarty();
+
+        $this->smarty->setTemplateDir(APP . 'view/');
+        $this->smarty->setCompileDir(APP . 'smarty/templates_c');
+        $this->smarty->setCacheDir(APP . 'smarty/cache');
+        $this->smarty->setConfigDir(APP . 'smarty/configs');
+
     }
 
     public function protect($input)

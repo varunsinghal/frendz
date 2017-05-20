@@ -19,9 +19,7 @@ class Group extends Controller {
 
     	$groups = $this->groupService->findGroupByMemberId($_SESSION['user_id']);
     	// load views
-		require APP . 'view/_templates/header.php';
-		require APP . 'view/group/index.php';
-		require APP . 'view/_templates/footer.php';
+		$this->smarty->display('group/index.tpl');
     }
 
     public function create(){
@@ -33,9 +31,7 @@ class Group extends Controller {
 
     	}
     	// load views
-		require APP . 'view/_templates/header.php';
-		require APP . 'view/group/create.php';
-		require APP . 'view/_templates/footer.php';
+		$this->smarty->display('group/create.tpl');
     }
 
     public function id($group_id){
@@ -47,9 +43,7 @@ class Group extends Controller {
            header('location:' . URL . 'group/');
         }
         // load views
-        require APP . 'view/_templates/header.php';
-        require APP . 'view/group/id.php';
-        require APP . 'view/_templates/footer.php';
+        $this->smarty->display('group/id.tpl');
     }
 
     /* AJAX-ACTION */
