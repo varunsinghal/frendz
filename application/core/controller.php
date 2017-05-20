@@ -33,4 +33,5 @@ class Controller
         $input = trim($input);
         return $input;
     }
+
 }

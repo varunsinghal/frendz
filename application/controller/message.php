@@ -1,22 +1,21 @@
 <?php
 
-//require APP . 'service/messageservice.php';
+require APP . 'service/messageservice.php';
 
 class Message extends Controller {
 
 	function __construct() {
         parent::__construct();
-
         if(!isset($_SESSION['user_id'])){
             header('location:' . URL . 'user/login');
         }
+        $this->messageService = new MessageService($this->db);
+        
     }
 
     public function index() {
-
-    	//fetch all active threads 
-
-    	// load views
+        $threads = $this->messageService->fetchActiveThreads($_SESSION['user_id']);
+        $this->smarty->assign('threads', $threads);
 		$this->smarty->display('message/index.tpl');
     }
 
