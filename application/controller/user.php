@@ -30,6 +30,7 @@ class User extends Controller {
 			else{
 				$this->smarty->assign('message', 'Invalid credentials.');
 			}
+			$this->smarty->assign('email', $_POST['email']);
 		}
 		$this->smarty->display('user/login.tpl');
 	}
@@ -39,6 +40,12 @@ class User extends Controller {
 		if(isset($_POST['register_user'])){	
 			$result = $this->userService->register($this->protect($_POST['first_name']), $this->protect($_POST['last_name']), $this->protect($_POST['email']), $this->protect($_POST['pass']));
 			$this->smarty->assign('message', $result["message"]);
+			if($result["status_flag"] == -1){
+				$this->smarty->assign('first_name', $_POST['first_name']);
+				$this->smarty->assign('last_name', $_POST['last_name']);
+				$this->smarty->assign('email', $_POST['email']);
+			}
+			
 		}
 		$this->smarty->display('user/register.tpl');
 	}
