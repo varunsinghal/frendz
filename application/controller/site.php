@@ -18,6 +18,6 @@ class Site extends Controller {
   public function about() {
 
         // load views
-     $this->smarty->display('problem/about.tpl');
+     $this->smarty->display('site/about.tpl');
  }
 }

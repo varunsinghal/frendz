@@ -17,10 +17,18 @@
 
     <!-- navigation -->
     <div class="navigation">
+        {if $smarty.session.user_id}
         <a href="{URL}">home</a>
-        <a href="{URL}home/exampleone">subpage</a>
-        <a href="{URL}home/exampletwo">subpage 2</a>
-        <a href="{URL}songs">songs</a>
+        <a href="{URL}group">My Groups</a>
+        <a href="{URL}connection">My Connections</a>
+        <a href="{URL}message">My Messages</a>
+        <a href="{URL}home/logout">Logout</a>
+        {else}
+        <a href="{URL}">home</a>
+        <a href="{URL}site/about">About</a>
+        <a href="{URL}user/login">Login</a>
+        <a href="{URL}user/register">Register</a>
+        {/if}
     </div>
 
     

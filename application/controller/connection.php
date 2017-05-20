@@ -5,12 +5,14 @@ class Connection extends Controller {
 	function __construct() {
 		parent::__construct();
 		if(!isset($_SESSION['user_id'])){
-			header('location:' . URL . 'site/');
+			header('location:' . URL . 'user/login');
 		}
 	}
 
 	public function index(){
     	//fetch all active connections as list
+
+    	$this->smarty->display('message/index.tpl');
 
 	}
 
@@ -31,6 +33,6 @@ class Connection extends Controller {
 	}
 
 	public function request(){
-		
+
 	}
 }
