@@ -19,6 +19,7 @@ class Group extends Controller {
 
     	$groups = $this->groupService->findGroupByMemberId($_SESSION['user_id']);
     	// load views
+        $this->smarty->assign('groups', $groups);
 		$this->smarty->display('group/index.tpl');
     }
 
@@ -27,7 +28,7 @@ class Group extends Controller {
     	if(isset($_POST['create_group'])){
     		$result = $this->groupService->createGroup($this->protect($_POST['group_name']), $this->protect($_POST['group_des']), $_SESSION['user_id']);
 
-    		echo $result["message"];
+    		$this->smarty->assign('message', $result["message"]);
 
     	}
     	// load views
