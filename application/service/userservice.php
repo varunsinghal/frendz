@@ -7,9 +7,9 @@ class UserService extends Service{
 
 
 	function __construct() {
-        parent::__construct();
-        $this->userModel = new UserModel($this->db);
-    }
+		parent::__construct();
+		$this->userModel = new UserModel($this->db);
+	}
 
 
 	public function authenticate($strUsername, $strPassword){
@@ -18,14 +18,12 @@ class UserService extends Service{
 		}
 		else{
 			$user_detail = $this->userModel->authenticate($strUsername, $strPassword);
-			if($user_detail->user_id == null){
-				return null;
-			}
-			else{
+			if($user_detail){
 				return array("user_id" => $user_detail->user_id, "user_name" => $user_detail->user_first_name);
 			}
 		}
 	}
+
 
 	public function register($strFirstName, $strLastName, $strEmail, $strPassword){
 		if($this->userModel->findByEmail($strEmail)){

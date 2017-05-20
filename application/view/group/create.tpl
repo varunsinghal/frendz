@@ -10,7 +10,4 @@
 	<input type="submit" name="create_group" value="Create"/>
 </form>
 
-{if $message|default:FALSE}
-{$message}
-{/if}
 {/block}

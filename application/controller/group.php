@@ -16,34 +16,26 @@ class Group extends Controller {
     }
 
     public function index() {
-
     	$groups = $this->groupService->findGroupByMemberId($_SESSION['user_id']);
-    	// load views
         $this->smarty->assign('groups', $groups);
 		$this->smarty->display('group/index.tpl');
     }
 
     public function create(){
-
     	if(isset($_POST['create_group'])){
     		$result = $this->groupService->createGroup($this->protect($_POST['group_name']), $this->protect($_POST['group_des']), $_SESSION['user_id']);
-
     		$this->smarty->assign('message', $result["message"]);
-
     	}
-    	// load views
 		$this->smarty->display('group/create.tpl');
     }
 
     public function id($group_id){
-
         if($this->groupService->validateAccess($_SESSION['user_id'], $this->protect($group_id))){
             $posts = $this->groupService->fetchByGroupId($group_id);
         }
         else{
            header('location:' . URL . 'group/');
         }
-        // load views
         $this->smarty->display('group/id.tpl');
     }
 
