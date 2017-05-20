@@ -4,6 +4,7 @@
 <head>
     <title>{block name=title}Home{/block} | Frendz</title>
     <link href="{URL}css/style.css" rel="stylesheet">
+    <link href="{URL}css/font-awesome.min.css" rel="stylesheet">
     <meta name="description" content="">
     <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
 
