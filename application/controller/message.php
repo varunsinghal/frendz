@@ -10,6 +10,7 @@ class Message extends Controller {
             header('location:' . URL . 'user/login');
         }
         $this->messageService = new MessageService($this->db);
+        $this->smarty->assign('module_name', 'messages');
         
     }
 

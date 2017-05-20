@@ -35,7 +35,7 @@
             <div id="content">
                 <div class="overflow">
                     <div id="textpadding">
-                        <h2>frendz</h2>
+                        <h2>frendz - {$module_name|default:home}</h2>
                         {if $message|default:FALSE}
                         <p>{$message}</p>
                         {/if}

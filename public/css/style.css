@@ -83,3 +83,10 @@ a:hover
     text-align: right;
     background: #FAFAF8;
 }
+
+.messagetable td{
+
+    vertical-align: top;
+    padding-left: 10px;
+
+}

@@ -2,8 +2,9 @@
 
 {block name=title}Message{/block}
 {block name=body}
-
-<table>
+<a href="{URL}message/create"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> New Message</a>
+<br/><br/>
+<table class="messagetable">
 	{foreach $threads as $thread}
 	<tr>
 		<td>
