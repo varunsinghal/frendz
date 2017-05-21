@@ -104,3 +104,8 @@ a:hover
 .center-text img{
     vertical-align: middle;
 }
+
+.connectiontable td{
+    vertical-align: top;
+    padding-left: 10px;
+}
