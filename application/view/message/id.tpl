@@ -8,7 +8,7 @@
 
 {block name=body}
 <div id="sticky">
-	<a href="{URL}message/"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i> Back to messages</a>
+	<a href="{URL}message/"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Back to messages</a>
 </div>
 <br/>
 

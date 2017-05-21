@@ -28,7 +28,7 @@
 {/block}
 
 {block name=body}
-<a href="{URL}message/"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i> Back to messages</a>
+<a href="{URL}message/"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Back to messages</a>
 <br/><br/>
 <form method="post" action="{URL}message/create">
 	<table>
