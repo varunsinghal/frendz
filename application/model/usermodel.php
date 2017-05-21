@@ -13,7 +13,7 @@ class UserModel{
     }
 	
 	public function authenticate($email, $password){
-        $sql = "SELECT user_id, user_first_name from user where user_email=:email and user_password=:password";
+        $sql = "SELECT user_id, user_first_name, user_email from user where user_email=:email and user_password=:password";
         $query = $this->db->prepare($sql);
         $parameters = array(':email' => $email, ':password' => $password);
         $query->execute($parameters);

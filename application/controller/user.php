@@ -25,6 +25,7 @@ class User extends Controller {
 			if($result != null){
 				$_SESSION['user_id'] = $result["user_id"];
 				$_SESSION['user_name'] = $result["user_name"];
+				$_SESSION['user_email'] = $result["user_email"];
 				header('location:' . URL . 'home/');
 			}
 			else{

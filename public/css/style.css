@@ -95,3 +95,12 @@ a:hover
     padding-left: 10px;
 
 }
+
+.middletable td{
+    vertical-align: middle;
+    padding-left: 10px;
+}
+
+.center-text img{
+    vertical-align: middle;
+}

@@ -17,7 +17,7 @@ class UserService{
 		else{
 			$user_detail = $this->userModel->authenticate($strUsername, $strPassword);
 			if($user_detail){
-				return array("user_id" => $user_detail->user_id, "user_name" => $user_detail->user_first_name);
+				return array("user_id" => $user_detail->user_id, "user_name" => $user_detail->user_first_name, "user_email" => $user_detail->user_email);
 			}
 		}
 	}

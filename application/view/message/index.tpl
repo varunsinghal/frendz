@@ -18,6 +18,8 @@
 			{else}
 			<i class="fa fa-long-arrow-left" aria-hidden="true"></i>
 			{/if}{$thread->message_content}
+			<br/>
+			{$thread->created_on|relativedate}
 		</td>
 	</tr>
 	{/foreach}

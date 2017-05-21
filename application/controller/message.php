@@ -34,7 +34,11 @@ class Message extends Controller {
 
     public function id($other_user_id=null){
         if($other_user_id){
+            if(isset($_POST["send_message"])){
+                $this->messageService->addMessage($_SESSION['user_id'], $other_user_id, $_POST['message_content']);
+            }
             $threads = $this->messageService->fetchConversation($_SESSION['user_id'], $other_user_id);
+            $this->smarty->assign('other_user_id', $other_user_id);
             $this->smarty->assign('threads', $threads);
             $this->smarty->display('message/id.tpl');
         }
@@ -45,14 +49,6 @@ class Message extends Controller {
         
 
     }
-
-
-    /* AJAX - ACTION */
-
-    public function addMessage(){
-
-    }
-
 
 
 }
