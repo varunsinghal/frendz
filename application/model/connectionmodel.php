@@ -31,7 +31,7 @@ class ConnectionModel{
 	}
 
 	public function isConnectedOrPending($user1, $user2){
-		$sql = "SELECT accept from connection_detail where (from_user_id=:user1 and to_user_id=:user2) or (from_user_id=:user2 and to_user_id=:user1)";
+		$sql = "SELECT accept from connection_detail where ((from_user_id=:user1 and to_user_id=:user2) or (from_user_id=:user2 and to_user_id=:user1)) and (accept=0 or accept=1)";
 		$query = $this->db->prepare($sql);
         $parameters = array(':user1' => $user1, ':user2' => $user2);
         $query->execute($parameters);
