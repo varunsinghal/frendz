@@ -19,7 +19,7 @@
 <body>
 <div id="container" style="margin: 0px auto; width: 760px;">
 
-        <div id="header" style="background-image: url("{URL}img/header.jpg");">&nbsp;</div>
+        <div id="header" style="background-image: url('{URL}img/header.jpg');">&nbsp;</div>
 
         <div id="menu">
             {if $smarty.session.user_id|default:FALSE}
