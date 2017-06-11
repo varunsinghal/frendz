@@ -11,9 +11,29 @@ class GroupModel{
             exit('Database connection could not be established.');
         }
     }
-	
-	 public function findGroupByMemberId($user_id){
-        $sql = "SELECT gd.group_id, gd.group_name, gd.group_description from group_detail AS gd left join group_member AS gm on gd.group_id = gm.group_id where user_id=:user_id";
+
+    public function findGroupByMemberId($user_id){
+        $sql = "
+        SELECT gd.group_id, gd.group_name, gd.group_description, pd.post_title, cd.comment_title
+        from group_detail AS gd 
+        left join group_member AS gm 
+        on gd.group_id = gm.group_id 
+        left join (
+            SELECT A.post_id, A.post_title, A.created_on, A.group_id from post_detail A 
+                inner join 
+            (SELECT group_id, MAX(created_on) AS latest_created_on FROM post_detail GROUP BY group_id) B 
+                on A.created_on = B.latest_created_on 
+                ) AS pd 
+        on pd.group_id = gd.group_id 
+        left join (
+            SELECT A.post_id, A.comment_title, A.created_on from comment_detail A 
+                inner join 
+            (SELECT post_id, MAX(created_on) AS latest_created_on FROM comment_detail GROUP BY post_id) B 
+                on A.created_on = B.latest_created_on
+            ) AS cd 
+        on pd.post_id = cd.post_id
+        where gm.user_id=:user_id
+        ";
         $query = $this->db->prepare($sql);
         $parameters = array(':user_id' => $user_id);
         $query->execute($parameters);

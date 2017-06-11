@@ -52,7 +52,7 @@
             </div>
         </div>
 
-        <div id="footer">created by varun singhal and gaurav sharma. copyrights &copy; 2012.</div>
+        <div id="footer">All rights reserved. copyrights &copy; 2012.</div>
 
     </div>
 

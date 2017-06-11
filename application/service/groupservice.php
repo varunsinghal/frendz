@@ -13,7 +13,13 @@ class GroupService{
     }
 
 	public function findGroupByMemberId($intUserId){
-		return $this->groupModel->findGroupByMemberId($intUserId);
+		$groups = $this->groupModel->findGroupByMemberId($intUserId);
+
+		foreach ($groups as $index => $group) {
+			
+		}
+		print_r($groups);
+		return $groups;
 	}
 
 	public function createGroup($strGroupName, $strGroupDescription, $intUserId){
