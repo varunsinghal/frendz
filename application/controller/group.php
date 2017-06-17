@@ -19,7 +19,7 @@ class Group extends Controller {
     public function index() {
     	$groups = $this->groupService->findGroupByMemberId($_SESSION['user_id']);
         $this->smarty->assign('groups', $groups);
-		$this->smarty->display('group/index.tpl');
+        $this->smarty->display('group/index.tpl');
     }
 
     public function create(){
@@ -27,30 +27,31 @@ class Group extends Controller {
     		$result = $this->groupService->createGroup($this->protect($_POST['group_name']), $this->protect($_POST['group_des']), $_SESSION['user_id']);
     		$this->smarty->assign('message', $result["message"]);
     	}
-		$this->smarty->display('group/create.tpl');
+      $this->smarty->display('group/create.tpl'); 
     }
 
     public function id($group_id){
         if($this->groupService->validateAccess($_SESSION['user_id'], $this->protect($group_id))){
-            $posts = $this->groupService->fetchByGroupId($group_id);
+            $this->smarty->assign('group_detail', $this->groupService->fetchGroupDetails($group_id));
+            $this->smarty->assign('posts' , $this->groupService->fetchPosts($group_id));
         }
         else{
            header('location:' . URL . 'group/');
-        }
-        $this->smarty->display('group/id.tpl');
+       }
+       $this->smarty->display('group/id.tpl');
     }
 
-    /* AJAX-ACTION */
+   /* AJAX-ACTION */
 
-    public function addPost(){
+   public function addPost(){
 
-    }
+   }
 
-    public function addComment(){
+   public function addComment(){
 
-    }
+   }
 
-    public function addUser(){
+   public function addUser(){
 
-    }
+   }
 }

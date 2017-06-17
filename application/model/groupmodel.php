@@ -19,18 +19,18 @@ class GroupModel{
         left join group_member AS gm 
         on gd.group_id = gm.group_id 
         left join (
-            SELECT A.post_id, A.post_title, A.created_on, A.group_id from post_detail A 
-                inner join 
-            (SELECT group_id, MAX(created_on) AS latest_created_on FROM post_detail GROUP BY group_id) B 
-                on A.created_on = B.latest_created_on 
-                ) AS pd 
+        SELECT A.post_id, A.post_title, A.created_on, A.group_id from post_detail A 
+        inner join 
+        (SELECT group_id, MAX(created_on) AS latest_created_on FROM post_detail GROUP BY group_id) B 
+        on A.created_on = B.latest_created_on 
+        ) AS pd 
         on pd.group_id = gd.group_id 
         left join (
-            SELECT A.post_id, A.comment_title, A.created_on from comment_detail A 
-                inner join 
-            (SELECT post_id, MAX(created_on) AS latest_created_on FROM comment_detail GROUP BY post_id) B 
-                on A.created_on = B.latest_created_on
-            ) AS cd 
+        SELECT A.post_id, A.comment_title, A.created_on from comment_detail A 
+        inner join 
+        (SELECT post_id, MAX(created_on) AS latest_created_on FROM comment_detail GROUP BY post_id) B 
+        on A.created_on = B.latest_created_on
+        ) AS cd 
         on pd.post_id = cd.post_id
         where gm.user_id=:user_id
         order by gd.created_on desc
@@ -71,11 +71,24 @@ class GroupModel{
     }
 
     public function findGroupDetail($group_id){
-        $sql = "SELECT * FROM group_detail WHERE group_id=:group_id";
+        $sql = "SELECT gd.*, user.user_first_name, user.user_last_name, user.user_id FROM group_detail AS gd left join user on gd.group_created_by = user.user_id WHERE group_id=:group_id";
         $query = $this->db->prepare($sql);
         $parameters = array(':group_id' => $group_id);
         $query->execute($parameters);
         return $query->fetch();
+    }
+
+    public function fetchPosts($group_id){
+        $sql = "SELECT pd.post_id, post_title, pd.created_on, cd.comment_count, user.user_first_name, user.user_last_name, user.user_id
+                from post_detail AS pd left join user 
+                    on pd.user_id = user.user_id 
+                left join (select post_id, count(comment_id) AS comment_count, max(created_on) AS max_created_on from comment_detail group by post_id) cd
+                    on pd.post_id = cd.post_id
+            where group_id=:group_id order by max_created_on desc, pd.created_on desc";
+        $query = $this->db->prepare($sql);
+        $parameters = array(':group_id' => $group_id);
+        $query->execute($parameters);
+        return $query->fetchAll();
     }
 
 

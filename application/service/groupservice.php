@@ -1,15 +1,11 @@
 <?php 
 
 require APP . 'model/groupmodel.php';
-require APP . 'model/postmodel.php';
-require APP . 'model/commentmodel.php';
 
 class GroupService{
 
 	function __construct($db) {
 		$this->groupModel = new GroupModel($db);
-		$this->postModel = new PostModel($db);
-		$this->commentModel = new CommentModel($db);
 	}
 
 	public function findGroupByMemberId($intUserId){
@@ -38,11 +34,12 @@ class GroupService{
 		}
 	}
 
-	public function fetchByGroupId($int_group_id){
-		//build logic to return a single object
-		$this->groupModel->findGroupDetail($int_group_id);
-		$this->postModel->findAllPostByGroupId($int_group_id);
-		$this->commentModel->findAllCommentByGroupId($int_group_id);
+	public function fetchGroupDetails($group_id){
+		return $this->groupModel->findGroupDetail($group_id);
+	}
+
+	public function fetchPosts($group_id){
+		return $this->groupModel->fetchPosts($group_id);
 	}
 
 

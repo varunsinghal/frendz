@@ -2,7 +2,7 @@
 
 {block name=title}Groups{/block}
 {block name=body}
-<a href="{URL}group/create"><i class="fa fa-plus" aria-hidden="true"></i> Create group</a>
+<a href="{URL}group/create"><i class="fa fa-plus-circle" aria-hidden="true"></i> Create group</a>
 <br/><br/>
 
 <table class="messagetable">
