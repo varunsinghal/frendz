@@ -33,6 +33,7 @@ class GroupModel{
             ) AS cd 
         on pd.post_id = cd.post_id
         where gm.user_id=:user_id
+        order by gd.created_on desc
         ";
         $query = $this->db->prepare($sql);
         $parameters = array(':user_id' => $user_id);

@@ -9,22 +9,18 @@
 	{foreach $groups as $group}
 	<tr>
 		<td>
-			{}
+			<a href="{URL}group/id/{$group->group_id}">{$group->group_name}</a>		
 		</td>
 		<td>
-			<a href="{URL}group/id/{$group->group_id}">{$group->group_name}</a> ({}) <br/>
 			{$group->group_description}
 		</td>
 		<td>
-			{}
-			Posts
-		</td>
-		<td>
-			{}
-			Members
-		</td>
-		<td>
-			Last active post title with comment
+			{if $group->post_title}
+			<i class="fa fa-sticky-note-o" aria-hidden="true"></i> {$group->post_title}<br/>
+			{if $group->comment_title}
+			<i class="fa fa-comment" aria-hidden="true"></i> {$group->comment_title}
+			{/if}
+			{/if}
 		</td>
 	</tr>
 	{/foreach}

@@ -7,19 +7,13 @@ require APP . 'model/commentmodel.php';
 class GroupService{
 
 	function __construct($db) {
-        $this->groupModel = new GroupModel($db);
-        $this->postModel = new PostModel($db);
-        $this->commentModel = new CommentModel($db);
-    }
+		$this->groupModel = new GroupModel($db);
+		$this->postModel = new PostModel($db);
+		$this->commentModel = new CommentModel($db);
+	}
 
 	public function findGroupByMemberId($intUserId){
-		$groups = $this->groupModel->findGroupByMemberId($intUserId);
-
-		foreach ($groups as $index => $group) {
-			
-		}
-		print_r($groups);
-		return $groups;
+		return $this->groupModel->findGroupByMemberId($intUserId);
 	}
 
 	public function createGroup($strGroupName, $strGroupDescription, $intUserId){
