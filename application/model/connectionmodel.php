@@ -14,7 +14,7 @@ class ConnectionModel{
 
 	public function fetchActiveConnections($user_id){
 		$sql = "
-		SELECT user.user_first_name, user.user_last_name, user.user_email, cd.updated_on, cd.other_user 
+		SELECT frendz_user.user_first_name, frendz_user.user_last_name, frendz_user.user_email, cd.updated_on, cd.other_user 
 		FROM (SELECT 
 		CASE
 		WHEN from_user_id =:user_id THEN to_user_id
@@ -22,7 +22,7 @@ class ConnectionModel{
 		END AS other_user,
 		updated_on
 		FROM connection_detail
-		WHERE (accept = 1) and (from_user_id =:user_id or to_user_id =:user_id)) cd LEFT JOIN user on cd.other_user = user.user_id order by updated_on desc
+		WHERE (accept = 1) and (from_user_id =:user_id or to_user_id =:user_id)) cd LEFT JOIN frendz_user on cd.other_user = frendz_user.user_id order by updated_on desc
 		";
 		$query = $this->db->prepare($sql);
         $parameters = array(':user_id' => $user_id);
@@ -46,7 +46,7 @@ class ConnectionModel{
 	}
 
 	public function fetchPendingConnections($user_id){
-		$sql = "SELECT user.user_id, user.user_first_name, user.user_last_name, user.user_email, cd.created_on, cd.note from (SELECT from_user_id, created_on, note from connection_detail where accept = 0 and to_user_id=:user_id) cd left join user on cd.from_user_id = user.user_id order by created_on desc";
+		$sql = "SELECT frendz_user.user_id, frendz_user.user_first_name, frendz_user.user_last_name, frendz_user.user_email, cd.created_on, cd.note from (SELECT from_user_id, created_on, note from connection_detail where accept = 0 and to_user_id=:user_id) cd left join frendz_user on cd.from_user_id = frendz_user.user_id order by created_on desc";
 		$query = $this->db->prepare($sql);
         $parameters = array(':user_id' => $user_id);
         $query->execute($parameters);
@@ -61,7 +61,7 @@ class ConnectionModel{
 	}
 
 	public function fetchRequestedConnections($user_id){
-		$sql = "SELECT user.user_id, user.user_first_name, user.user_last_name, user.user_email, cd.created_on, cd.note from (SELECT to_user_id, created_on, note from connection_detail where accept = 0 and from_user_id=:user_id) cd left join user on cd.to_user_id = user.user_id order by created_on desc";
+		$sql = "SELECT frendz_user.user_id, frendz_user.user_first_name, frendz_user.user_last_name, frendz_user.user_email, cd.created_on, cd.note from (SELECT to_user_id, created_on, note from connection_detail where accept = 0 and from_user_id=:user_id) cd left join frendz_user on cd.to_user_id = frendz_user.user_id order by created_on desc";
 		$query = $this->db->prepare($sql);
         $parameters = array(':user_id' => $user_id);
         $query->execute($parameters);
