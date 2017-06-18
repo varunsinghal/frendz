@@ -3,7 +3,7 @@
 {block name=title}Register{/block}
 {block name=body}
 <div class="sticky">
-<i class="fa fa-address-card-o" aria-hidden="true"></i> <b>Register</b>
+    <i class="fa fa-address-card-o" aria-hidden="true"></i> <b>Register</b>
 </div>
 <br/>
 

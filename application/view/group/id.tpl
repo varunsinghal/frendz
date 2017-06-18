@@ -5,7 +5,7 @@
 <div class="sticky">
 	<a href="{URL}group/"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Back to groups</a>
 	&nbsp;&nbsp; &nbsp;&nbsp; 
-	<a href="{URL}addPost/{$group_detail->group_id}"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add post</a>
+	<a href="{URL}group/addPost/{$group_detail->group_id}"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add post</a>
 </div>
 
 <br/><br/>
