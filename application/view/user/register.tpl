@@ -2,8 +2,10 @@
 
 {block name=title}Register{/block}
 {block name=body}
-
-<b>Register</b>
+<div class="sticky">
+<i class="fa fa-address-card-o" aria-hidden="true"></i> <b>Register</b>
+</div>
+<br/>
 
 <form action="{URL}user/register" method="POST">
     <table>
