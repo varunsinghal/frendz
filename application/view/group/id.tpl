@@ -2,9 +2,12 @@
 
 {block name=title}{$group_detail->group_name}{/block}
 {block name=body}
-<a href="{URL}group/"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Back to groups</a>
-&nbsp;&nbsp; &nbsp;&nbsp; 
-<a href="{URL}addPost/{$group_detail->group_id}"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add post</a>
+<div class="sticky">
+	<a href="{URL}group/"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Back to groups</a>
+	&nbsp;&nbsp; &nbsp;&nbsp; 
+	<a href="{URL}addPost/{$group_detail->group_id}"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add post</a>
+</div>
+
 <br/><br/>
 Group name: {$group_detail->group_name}
 <br/>

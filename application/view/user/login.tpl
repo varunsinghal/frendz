@@ -2,8 +2,10 @@
 
 {block name=title}Login{/block}
 {block name=body}
-
-<b>Login</b>
+<div class="sticky">
+	<i class="fa fa-sign-in" aria-hidden="true"></i> <b>Login</b>
+</div>
+<br/>
 <form action="{URL}user/login" method="POST">
 	<table>
 		<tr>

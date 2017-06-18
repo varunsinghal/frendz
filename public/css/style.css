@@ -25,6 +25,10 @@ a:hover
     text-decoration: none;
 }
 
+h2{
+    margin: 0px;
+}
+
 #header
 {
     width: 760px;
@@ -109,3 +113,8 @@ a:hover
     vertical-align: top;
     padding-left: 10px;
 }
+
+.sticky{
+    border-bottom: 1px dashed #808080;
+    font-family: arial;
+ }

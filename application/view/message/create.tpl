@@ -15,12 +15,12 @@
 				return false;
 			},
 			change: function (event, ui) {
-                if(!ui.item){
-                    $("#to").val("");
-                    $("#to_user_id").val("");
-                    $("#view_profile").html('<i class="fa fa-user-o" aria-hidden="true"></i>');
-                }
-            }
+				if(!ui.item){
+					$("#to").val("");
+					$("#to_user_id").val("");
+					$("#view_profile").html('<i class="fa fa-user-o" aria-hidden="true"></i>');
+				}
+			}
 
 		});
 	} );
@@ -28,7 +28,10 @@
 {/block}
 
 {block name=body}
-<a href="{URL}message/"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Back to messages</a>
+<div class="sticky">
+	<a href="{URL}message/"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Back to messages</a>
+</div>
+
 <br/><br/>
 <form method="post" action="{URL}message/create">
 	<table>

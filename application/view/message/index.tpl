@@ -2,13 +2,16 @@
 
 {block name=title}Message{/block}
 {block name=body}
-<a href="{URL}message/create"><i class="fa fa-pencil-square" aria-hidden="true"></i> New Message</a>
+<div class="sticky">
+	<a href="{URL}message/create"><i class="fa fa-pencil-square" aria-hidden="true"></i> New Message</a>
+</div>
+
 <br/><br/>
 <table class="messagetable">
 	{foreach $threads as $thread}
 	<tr>
 		<td>
-		<a href="{URL}message/id/{$thread->other_user}">{getgravatar email=$thread->user_email}</a>
+			<a href="{URL}message/id/{$thread->other_user}">{getgravatar email=$thread->user_email}</a>
 
 		</td>
 		<td>
