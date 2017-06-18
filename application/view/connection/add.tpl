@@ -14,12 +14,12 @@
 				return false;
 			},
 			change: function (event, ui) {
-                if(!ui.item){
-                    $("#to").val("");
-                    $("#to_user_id").val("");
-                    $("#view_profile").html('<i class="fa fa-user-o" aria-hidden="true"></i>');
-                }
-            }
+				if(!ui.item){
+					$("#to").val("");
+					$("#to_user_id").val("");
+					$("#view_profile").html('<i class="fa fa-user-o" aria-hidden="true"></i>');
+				}
+			}
 
 		});
 	} );
@@ -27,14 +27,15 @@
 {/block}
 
 {block name=body}
-<a href="{URL}connection"><i class="fa fa-users" aria-hidden="true"></i> My connections</a>
-&nbsp;&nbsp; &nbsp;&nbsp; 
-<a href="{URL}connection/add"><i class="fa fa-user-plus" aria-hidden="true"></i> Add connection</a>
-&nbsp;&nbsp; &nbsp;&nbsp; 
-<a href="{URL}connection/pending"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i> Received requests</a>
-&nbsp;&nbsp; &nbsp;&nbsp;
-<a href="{URL}connection/requested"><i class="fa fa-paper-plane" aria-hidden="true"></i> Sent requests</a>
- 
+<div class="sticky">
+	<a href="{URL}connection"><i class="fa fa-users" aria-hidden="true"></i> My connections</a>
+	&nbsp;&nbsp; &nbsp;&nbsp; 
+	<a href="{URL}connection/add"><i class="fa fa-user-plus" aria-hidden="true"></i> Add connection</a>
+	&nbsp;&nbsp; &nbsp;&nbsp; 
+	<a href="{URL}connection/pending"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i> Received requests</a>
+	&nbsp;&nbsp; &nbsp;&nbsp;
+	<a href="{URL}connection/requested"><i class="fa fa-paper-plane" aria-hidden="true"></i> Sent requests</a>
+</div>
 
 <br/><br/>
 <form method="post" action="{URL}connection/add">

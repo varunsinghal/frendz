@@ -2,8 +2,11 @@
 
 {block name=title}Create Group{/block}
 {block name=body}
-<a href="{URL}group/"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Back to groups</a>
+<div class="sticky">
+	<a href="{URL}group/"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Back to groups</a>
+</div>
 <br/><br/>
+
 <form method="POST" action="{URL}group/create">
 	<table>
 		<tr>
