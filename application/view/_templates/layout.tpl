@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
 
-  
+
     <link href="{URL}css/font-awesome.min.css" rel="stylesheet">
     <link href="{URL}css/jquery-ui.min.css" rel="stylesheet">
     <link href="{URL}css/style.css" rel="stylesheet">
@@ -17,9 +17,13 @@
 
 </head>
 <body>
-<div id="container" style="margin: 0px auto; width: 760px;">
+    <div id="container" style="margin: 0px auto; width: 760px;">
 
-        <div id="header" style="background-image: url('{URL}img/header.jpg');">&nbsp;</div>
+        <div id="header" style="background-image: url('{URL}img/header.jpg');">
+        <a href="https://web4code.wordpress.com" target="_blank">
+                <img src="{URL}img/web4code_logo.png">
+            </a>
+        </div>
 
         <div id="menu">
             {if $smarty.session.user_id|default:FALSE}

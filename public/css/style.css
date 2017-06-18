@@ -38,6 +38,12 @@ h2{
     border-bottom: 0px;
 }
 
+#header img{
+    float: right;
+    padding: 25px 10px;
+    height: 70px;
+}
+
 #menu
 {
     width: 740px;
@@ -117,4 +123,4 @@ h2{
 .sticky{
     border-bottom: 1px dashed #808080;
     font-family: arial;
- }
+}
