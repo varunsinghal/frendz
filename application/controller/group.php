@@ -43,7 +43,9 @@ class Group extends Controller {
 
    /* AJAX-ACTION */
 
-   public function addPost(){
+   public function addPost($group_id){
+
+    $this->smarty->display('group/add_post.tpl');
 
    }
 
