@@ -6,6 +6,7 @@ class Site extends Controller {
 
 	function __construct() {
         parent::__construct();
+        $this->smarty->assign('module_name', 'site');
     }
 
     public function index() {
